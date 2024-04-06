@@ -1,0 +1,389 @@
+Day 2: Special Logic Building Assignment: 10 special Recursion Programs
+
+1. Print 1 to n without using loops
+
+import java.lang.*;
+import java.util.*;
+
+class Print{
+
+public static void print(int x,int y){
+
+if (x<=y){                                                                 /// base statement
+
+System.out.println(x);                                        /// printing the no. from 1 to n
+print(x+1,y);                                                         /// recursion
+}
+}
+
+public static void main(String[] args){
+
+int n= 10;
+
+print(1,n);
+
+
+}
+}
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Print.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Print
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+2. Sum of natural numbers using recursion
+
+import java.lang.*;
+import java.util.*;
+
+class Natural{
+
+public static int naturalNo(int x){
+
+if (x==1){                                                    /// base ststement
+return 1;                                                    // return 1 for naturalNo(1)
+}
+else {
+return x+naturalNo(x-1);                         ///  recursion
+}
+}
+public static void main(String[] args){
+
+int n= 7;
+
+System.out.println(naturalNo(n));
+
+
+}
+}
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Natural.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Natural
+28
+
+3. Mean of Array using Recursion
+
+import java.lang.*;
+import java.util.*;
+
+class Mean{
+
+public static double mean(double[] x,int y,int z){
+
+if (z==y-1)                                                                // base ststement
+return z;
+else 
+return x[z]+(mean(x,y,z+1));                              // sum of array
+
+}
+
+public static void main(String[] args){
+
+double[] arr = {0,5,10,15,20};
+int a = arr.length;
+double r = mean(arr,a,0)/a;                                // sum divide by length
+System.out.println(r);
+
+}
+}
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Mean.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Mean
+7.0
+
+3. Sum of array elements using recursion
+
+import java.lang.*;
+import java.util.*;
+
+class Sum{
+
+public static double sum(double[] x,int y,int z){
+
+if (z==y-1)                                                                // base ststement
+return z;
+else 
+return x[z]+(mean(x,y,z+1));                              // sum of array
+
+}
+
+public static void main(String[] args){
+
+double[] arr = {0,5,10,15,20};
+
+double r = mean(arr,a,0);                                // sum of array in r 
+System.out.println(r);
+
+}
+}
+
+
+4. Decimal to binary number using recursion
+
+5. Sum of digit of a number using recursion
+
+import java.lang.*;
+import java.util.*;
+
+class sumofd{
+
+public static int sum(int a){
+
+if (a==0)                                     /// base case
+return 0;
+else 
+return a%10 +sum(a/10);  /// her we get the last digit of a no. with help of modulas then to eleminate that                                                      //digit we divide it by 10
+}
+
+public static void main(String[] args){
+
+int a = 1856;
+
+System.out.println(sum(a)); 
+
+}
+}
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac sumofd.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java sumofd
+20
+
+6. Print reverse of a string using recursion
+
+import java.lang.*;
+import java.util.*;
+
+class Reverse {
+    public static String rev(String str) {
+        if (str.isEmpty() || str.length() == 1)
+            return str;
+        else
+            return rev(str.substring(1)) + str.charAt(0);
+    }
+
+    public static void main(String[] args) {
+        String str = "abcd";
+        String reversedStr = rev(str);
+        System.out.println(reversedStr);
+    }
+}
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Reverse.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Reverse
+dcba
+
+===================================================================================================
+
+The rev method is a recursive function that reverses a string. Here's how it works:
+
+Base Case: The base case is defined in the if statement:
+
+java
+Copy code
+if (str.isEmpty() || str.length() == 1)
+    return str;
+This checks if the input string str is empty or has only one character. If so, it means the string is already reversed (or doesn't need to be reversed), so the method returns the same string.
+
+Recursive Case: If the input string has more than one character, the method enters the else block:
+
+java
+Copy code
+else
+    return rev(str.substring(1)) + str.charAt(0);
+This line of code is where the magic of recursion happens. It calls the rev method recursively with the substring of str starting from the second character (str.substring(1)), and then appends the first character of str (str.charAt(0)) at the end. This effectively reverses the order of characters in the string.
+
+Now, let's see how this works with an example:
+
+Input: "abcd"
+
+The rev method is called with the input string "abcd".
+Since the string has more than one character, it enters the else block.
+It calls rev("bcd") (substring of "abcd" starting from index 1) and appends 'a' at the end.
+Now, rev("bcd") is called.
+It calls rev("cd") (substring of "bcd" starting from index 1) and appends 'b' at the end.
+Now, rev("cd") is called.
+It calls rev("d") (substring of "cd" starting from index 1) and appends 'c' at the end.
+Now, rev("d") is called.
+Since "d" has only one character, it returns "d".
+"d" is appended with 'c' (resulting in "dc").
+This "dc" is returned to the previous call.
+"dc" is appended with 'b' (resulting in "dcb").
+This "dcb" is returned to the previous call.
+"dcb" is appended with 'a' (resulting in "dcba").
+This "dcba" is the final result and returned to the original caller.
+So, the reversed string of "abcd" is "dcba", which is the output of the rev method.
+
+===================================================================================================
+
+7. Program for length of a string using recursion
+
+import java.lang.*;
+import java.util.*;
+
+class Stringlength {
+    public static String length(String str) {
+        if (str.isEmpty())
+            return str;
+        else
+            return 1+length(str.substring(1));
+    }
+
+    public static void main(String[] args) {
+        String str = "abcd";
+        String ok = length(str);
+        System.out.println(ok);
+    }
+}
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Stringlength.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Stringlength
+1111
+
+8. Tail recursion to calculate sum of array elements.
+
+import java.lang.*;
+import java.util.*;
+
+class Tail{
+
+public static int tail(int[] arr,int a,int n){
+
+if (a==n-1)
+return arr[a];
+else 
+return arr[a] + tail(arr,a+1,n);
+
+}
+public static void main(String[] args){
+
+int[] arr = {5,5,5};
+int n = arr.length;
+
+System.out.println(tail(arr,0,n));
+
+}
+}
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Tail.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Tail
+15
+
+9. Recursive function to check if a string is palindrome
+
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static boolean isPalindrome(String str) {
+        // Base case: if the string has 0 or 1 character, it's a palindrome
+        if (str.length() <= 1) {
+            return true;
+        }
+        
+        // Recursive case: compare the first and last characters
+        if (str.charAt(0) == str.charAt(str.length() - 1)) {
+            // If the first and last characters match, check the substring excluding them
+            return isPalindrome(str.substring(1, str.length() - 1));
+        } else {
+            // If the first and last characters don't match, it's not a palindrome
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        if (isPalindrome(input)) {
+            System.out.println("The string is a palindrome.");
+        } else {
+            System.out.println("The string is not a palindrome.");
+        }
+        
+        scanner.close();
+    }
+}
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac PalindromeChecker.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java PalindromeChecker
+Enter a string: abccba
+The string is a palindrome.
+
+Base Case:
+
+If the length of the string is 0 or 1, it means the string is empty or has only one character. In such cases, it's considered a palindrome because a single character string is the same forwards and backwards.
+The base case checks for this condition:
+java
+Copy code
+if (str.length() <= 1) {
+    return true;
+}
+Recursive Case:
+
+If the length of the string is greater than 1, the method enters the recursive case.
+The method compares the first and last characters of the string:
+java
+Copy code
+if (str.charAt(0) == str.charAt(str.length() - 1)) {
+    // If the first and last characters match, check the substring excluding them
+    return isPalindrome(str.substring(1, str.length() - 1));
+}
+If the first and last characters are the same, it calls itself recursively with the substring excluding these characters (str.substring(1, str.length() - 1)).
+This effectively reduces the problem size, moving towards the base case. It's like dividing the problem into smaller, more manageable subproblems.
+If the first and last characters don't match, the method immediately returns false because the string can't be a palindrome:
+java
+Copy code
+else {
+    return false;
+}
+Recursion Unwinding:
+
+As the recursive calls continue, the string gets shorter and shorter until it reaches the base case (string length 0 or 1).
+At this point, the recursion unwinds. Each recursive call returns its result to the previous call, and ultimately to the original caller.
+If all the recursive calls return true (indicating that all the substrings were palindromes), then the original call returns true, indicating that the entire string is a palindrome.
+If any of the recursive calls return false, indicating that a substring is not a palindrome, then the original call also returns false.
+This recursive approach effectively checks whether a string is a palindrome by breaking down the problem into smaller subproblems and solving them recursively.
+
+10. Print Fibonacci Series in reverse order using Recursion
+import java.lang.*;
+import java.util.*;
+
+class Fibr{
+
+public static int fibr(int n){
+if (n <= 1) {                                                            // base statement
+            return n;
+        } else {
+            return fibr(n - 1) + fibr(n - 2);                  /// recursion
+        }
+}
+
+public static void main(String[] args){
+
+int n =5;
+
+fibr(n);
+ 
+ for (int i = n-1; i >= 0; i--) {
+            System.out.print(fibr(i) + " ");   //// reverse printing
+        }
+}
+}
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>javac Fibr.java
+
+C:\Users\User\Desktop\1.Cdac\4.DSA\Practice Assignment 2>java Fibr
+3 2 1 1 0
