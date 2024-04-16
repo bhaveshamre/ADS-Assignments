@@ -1,0 +1,280 @@
+1.Doubly Linked List Insertion in java
+
+public class DoublyLinkedList {
+    static class ListNode {
+        int val;
+        ListNode prev, next;
+        ListNode(int x) { val = x; }
+    }
+
+    public static ListNode insert(ListNode head, int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+        } else {
+            ListNode curr = head;
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+            curr.next = newNode;
+            newNode.prev = curr;
+        }
+        return head;
+    }
+}
+
+
+2. Reverse a Doubly Linked List in java
+
+public class DoublyLinkedList {
+    static class ListNode {
+        int val;
+        ListNode prev, next;
+        ListNode(int x) { val = x; }
+    }
+
+    public static ListNode reverse(ListNode head) {
+        ListNode curr = head, prev = null;
+        while (curr != null) {
+            ListNode nextNode = curr.next;
+            curr.next = prev;
+            curr.prev = nextNode;
+            prev = curr;
+            curr = nextNode;
+        }
+        return prev;
+    }
+}
+
+
+3.Delete a node in a Doubly Linked List in java
+
+public class DoublyLinkedList {
+    static class ListNode {
+        int val;
+        ListNode prev, next;
+        ListNode(int x) { val = x; }
+    }
+
+    public static ListNode deleteNode(ListNode head, int val) {
+        if (head == null) return null;
+        if (head.val == val) {
+            if (head.next != null) {
+                head.next.prev = null;
+            }
+            return head.next;
+        }
+        ListNode curr = head;
+        while (curr != null && curr.val != val) {
+            curr = curr.next;
+        }
+        if (curr == null) return head;
+        if (curr.next != null) {
+            curr.next.prev = curr.prev;
+        }
+        if (curr.prev != null) {
+            curr.prev.next = curr.next;
+        }
+        return head;
+    }
+}
+
+
+4.Program to find length of Doubly Linked List in java
+
+public class DoublyLinkedList {
+    static class ListNode {
+        int val;
+        ListNode prev, next;
+        ListNode(int x) { val = x; }
+    }
+
+    public static int length(ListNode head) {
+        int len = 0;
+        ListNode curr = head;
+        while (curr != null) {
+            len++;
+            curr = curr.next;
+        }
+        return len;
+    }
+}
+
+
+5.Find the largest node in Doubly linked list in java
+
+public class DoublyLinkedList {
+    static class ListNode {
+        int val;
+        ListNode prev, next;
+        ListNode(int x) { val = x; }
+    }
+
+    public static int findLargest(ListNode head) {
+        if (head == null) return Integer.MIN_VALUE;
+        int max = head.val;
+        ListNode curr = head;
+        while (curr != null) {
+            if (curr.val > max) {
+                max = curr.val;
+            }
+            curr = curr.next;
+        }
+        return max;
+    }
+}
+
+
+6.Insert value in sorted way in a sorted doubly linked list in java
+
+public class DoublyLinkedList {
+    static class ListNode {
+        int val;
+        ListNode prev, next;
+        ListNode(int x) { val = x; }
+    }
+
+    public static ListNode insertSorted(ListNode head, int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            return newNode;
+        }
+        if (val < head.val) {
+            newNode.next = head;
+            head.prev = newNode;
+            return newNode;
+        }
+        ListNode curr = head;
+        while (curr.next != null && curr.next.val < val) {
+            curr = curr.next;
+        }
+        newNode.next = curr.next;
+        if (curr.next != null) {
+            curr.next.prev = newNode;
+        }
+        curr.next = newNode;
+        newNode.prev = curr;
+        return head;
+    }
+}
+
+
+7.Write tree traversals in java
+
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int x) { val = x; }
+}
+
+public class TreeTraversal {
+    public static void inorder(TreeNode root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.print(root.val + " ");
+            inorder(root.right);
+        }
+    }
+
+    public static void preorder(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.val + " ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+    public static void postorder(TreeNode root) {
+        if (root != null) {
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.val + " ");
+        }
+    }
+}
+
+
+8.Search a node in Binary Tree
+
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int x) { val = x; }
+}
+
+public class BinaryTreeSearch {
+    public static boolean search(TreeNode root, int key) {
+        if (root == null) return false;
+        if (root.val == key) return true;
+        return search(root.left, key) || search(root.right, key);
+    }
+}
+
+
+9.Inorder Successor of a node in Binary Tree
+
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int x) { val = x; }
+}
+
+public class InorderSuccessor {
+    public static TreeNode inorderSuccessor(TreeNode root, TreeNode node) {
+        if (node.right != null) {
+            TreeNode curr = node.right;
+            while (curr.left != null) {
+                curr = curr.left;
+            }
+            return curr;
+        } else {
+            TreeNode succ = null;
+            while (root != null) {
+                if (node.val < root.val) {
+                    succ = root;
+                    root = root.left;
+                } else if (node.val > root.val) {
+                    root = root.right;
+                } else {
+                    break;
+                }
+            }
+            return succ;
+        }
+    }
+}
+
+
+10.Print Head node of every node in Binary Tree
+
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int x) { val = x; }
+}
+
+public class InorderSuccessor {
+    public static TreeNode inorderSuccessor(TreeNode root, TreeNode node) {
+        if (node.right != null) {
+            TreeNode curr = node.right;
+            while (curr.left != null) {
+                curr = curr.left;
+            }
+            return curr;
+        } else {
+            TreeNode succ = null;
+            while (root != null) {
+                if (node.val < root.val) {
+                    succ = root;
+                    root = root.left;
+                } else if (node.val > root.val) {
+                    root = root.right;
+                } else {
+                    break;
+                }
+            }
+            return succ;
+        }
+    }
+}
+
